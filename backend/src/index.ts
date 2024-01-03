@@ -16,6 +16,7 @@ import Cookies from "cookies"
 import User from "./entities/user.entity";
 import { jwtVerify } from "jose";
 import UserService from "./services/user.service";
+import { customAuthChecker } from "./lib/authChecker";
 
 export interface MyContext {
   req: express.Request; 
@@ -33,6 +34,7 @@ async function main() {
   const schema = await buildSchema({
     resolvers: [BookResolver, UserResolver],
     validate: false,
+    authChecker: customAuthChecker
   });
   // const server = new ApolloServer({
   //   schema,
@@ -47,7 +49,9 @@ async function main() {
   await server.start();
   app.use(
     "/",
-    cors<cors.CorsRequest>({ origin: "*" }),
+    cors<cors.CorsRequest>({ 
+      origin: ["http://localhost:3000", "https://studio.apollographql.com"], 
+      credentials: true, }),
     express.json(),
     // expressMiddleware accepts the same arguments:
     // an Apollo Server instance and optional configuration options

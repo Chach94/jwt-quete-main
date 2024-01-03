@@ -8,10 +8,28 @@ function Topbar() {
           Quête JWT
         </div>
         <div className="flex items-center space-x-4 text-lg font-semibold tracking-tight">
-          <Link href="/auth/login" className="px-6 py-2 text-black transition duration-700 ease-out bg-white border border-black rounded-lg hover:bg-black hover:border hover:text-white dark:border-white dark:bg-inherit dark:text-white dark:hover:bg-white dark:hover:text-black">
+          <Link
+            href="/books/create"
+            className="px-6 py-2 text-black transition duration-700 ease-out bg-white border border-black rounded-lg hover:bg-black hover:border hover:text-white dark:border-white dark:bg-inherit dark:text-white dark:hover:bg-white dark:hover:text-black"
+          >
+            Ajouter un livre
+          </Link>
+          <Link
+            href="/books/list"
+            className="px-6 py-2 text-black transition duration-700 ease-out bg-white border border-black rounded-lg hover:bg-black hover:border hover:text-white dark:border-white dark:bg-inherit dark:text-white dark:hover:bg-white dark:hover:text-black"
+          >
+            Liste des livres
+          </Link>
+          <Link
+            href="/auth/login"
+            className="px-6 py-2 text-black transition duration-700 ease-out bg-white border border-black rounded-lg hover:bg-black hover:border hover:text-white dark:border-white dark:bg-inherit dark:text-white dark:hover:bg-white dark:hover:text-black"
+          >
             Se connecter
           </Link>
-          <Link href="/auth/register" className="px-6 py-2 text-white transition duration-500 ease-out bg-blue-700 rounded-lg hover:bg-blue-800 hover:ease-in hover:underline">
+          <Link
+            href="/auth/register"
+            className="px-6 py-2 text-white transition duration-500 ease-out bg-blue-700 rounded-lg hover:bg-blue-800 hover:ease-in hover:underline"
+          >
             S'inscrire
           </Link>
         </div>

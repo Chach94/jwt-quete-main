@@ -43,6 +43,19 @@ export default class UserResolver {
   
  }
 
+ @Query(() => Message)
+  async logout(@Ctx() ctx: MyContext) {
+    if (ctx.user) {
+      let cookies = new Cookies(ctx.req, ctx.res);
+      cookies.set("token"); //sans valeur, le cookie token sera supprimé
+    }
+    const m = new Message();
+    m.message = "Vous avez été déconnecté";
+    m.success = true;
+    
+    return m;
+  }
+
 
  @Mutation (() => UserWithoutPassword)
  async register(@Arg("infos") infos: InputRegister){
