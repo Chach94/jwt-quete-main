@@ -28,7 +28,7 @@ function CreateBook() {
       className={`flex min-h-screen flex-col items-center justify-between p-24`}
     >
       <form onSubmit={handleSubmit}>
-        <h1 className="font-bold text-lg mb-8">Ajout d'un livre</h1>
+        <h1 className="font-bold text-lg mb-8">Ajout dun livre</h1>
         <div>
           <input name="title" placeholder="Titre du livre" />
         </div>

@@ -1,9 +1,11 @@
 import { LOGIN } from "@/requetes/queries/auth.queries";
-import { InputLogin, LoginQuery, LoginQueryVariables } from "@/types/graphql";
+import { InputLogin, LoginQuery, LoginQueryVariables, useLoginLazyQuery } from "@/types/graphql";
 import { useLazyQuery } from "@apollo/client";
-
+import { useRouter } from "next/router";
 
 function Login() {
+  const router = useRouter();
+  // const [login, { data, error }] = useLoginLazyQuery()
   const [login, { data, error }] = useLazyQuery<
     LoginQuery,
     LoginQueryVariables
@@ -16,14 +18,21 @@ function Login() {
     if (data.email && data.password) {
       login({
         variables: { infos: { email: data.email, password: data.password } },
+        onCompleted(data) {
+          if (data.login.success) {
+            router.push("/");
+          }
+        },
       });
     }
   };
+
   return (
     <main
       className={`flex min-h-screen flex-col items-center justify-between p-24`}
     >
       <form onSubmit={handleSubmit}>
+        <h1 className="font-bold text-lg mb-8">Connexion</h1>
         <div>
           <input type="text" name="email" placeholder="Indiquez votre email" />
         </div>
